@@ -7,6 +7,9 @@ SRC_WOLF = ./src/main.c \
 			./src/valid_help_2.c \
 			./src/game.c \
 			./src/sdl.c \
+			./src/init.c \
+			./src/texture.c \
+			./src/ft_game_js.c \
 
 OBJECT_WOLF = $(SRC_WOLF:.c=.o)
 
@@ -55,13 +58,12 @@ $(INCLUDES_SDL2_IMAGE) $(INCLUDES_SDL2_TTF) $(INCLUDES_SDL2_MIXER)
 clean:
 	make -C ./lib/libft clean
 	/bin/rm -f $(OBJECT_WOLF)
-	rm -f TAGS
 
 fclean: clean
 	/bin/rm -f ./lib/libft/libft.a
 	/bin/rm -f $(NAME)
 
-re: fclean all tags
+re: fclean all
 
 # tags:
 # 	etags -R *.c *.h

@@ -20,9 +20,9 @@ void    ft_mouse_right(t_wolf *wolf)
 void    ft_pause_2(t_wolf *wolf)
 {
     if (wolf->sdl.event.type == SDL_QUIT)
-        wolf->for_exit = 2;
+        wolf->loop = 0;
     if (wolf->sdl.event.type == SDL_KEYDOWN && wolf->sdl.event.key.keysym.sym == SDLK_ESCAPE)
-        wolf->for_exit = 1;
+        wolf->loop = 0;
     if (wolf->sdl.event.motion.xrel > -1000 && wolf->sdl.event.motion.xrel < 0)
     {
 		wolf->dir = wolf->raycast.dir_x;
@@ -78,12 +78,13 @@ void    ft_keys_2(t_wolf *wolf)
                                wolf->raycast.plan_y * cos(wolf->koef);
     }
     if (wolf->keys[SDL_SCANCODE_UP] || wolf->keys[SDL_SCANCODE_W]) {
-        if (wolf->array[(int)(wolf->raycast.posY)][(int)(wolf->raycast.posX
-                                                         + wolf->raycast.dir_x * wolf->speed)] == 0)
-            wolf->raycast.posX += wolf->raycast.dir_x * wolf->speed;
-        if (wolf->array[(int)(wolf->raycast.posY + wolf->raycast.dir_y
-                                                   * wolf->speed)][(int)(wolf->raycast.posX)] == 0)
-            wolf->raycast.posY += wolf->raycast.dir_y * wolf->speed;
+//        if (wolf->array[(int)(wolf->raycast.posY)][(int)(wolf->raycast.posX
+//                                                         + wolf->raycast.dir_x * wolf->speed)] == 0)
+//            wolf->raycast.posX += wolf->raycast.dir_x * wolf->speed;
+//        if (wolf->array[(int)(wolf->raycast.posY + wolf->raycast.dir_y
+//                                                   * wolf->speed)][(int)(wolf->raycast.posX)] == 0)
+//            wolf->raycast.posY += wolf->raycast.dir_y * wolf->speed;
+        wolf->fPlayerY += 1;
     }
 }
 
@@ -417,8 +418,8 @@ void	ft_game(t_wolf *wolf)
     SDL_SetRelativeMouseMode(1);
     SDL_WarpMouseInWindow(wolf->sdl.win, WIDTH / 2, HEIGHT / 2);
     Mix_PlayMusic(wolf->sdl.mus[0], -1);
-	if (wolf->for_exit == 0)
-		while (wolf->for_exit == 0)
+	if (wolf->loop == 0)
+		while (wolf->loop == 0)
 		{
             ft_fps(wolf);
             ft_init_ttf(wolf);

@@ -1,0 +1,3 @@
+/Users/tvoronyu/Desktop/Архив/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/tvoronyu/Desktop/Архив/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/tvoronyu/Desktop/Архив/cmake-build-debug/CMakeFiles/untitled7.dir

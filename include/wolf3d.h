@@ -2,14 +2,14 @@
 #define WOLF3D_WOLF3D_H
 #define WIDTH 1024
 #define HEIGHT 768
-#define TILE_SIZE 64
-#define WALL_HEIGHT 64
-#define PROJECTIONPLANEWIDTH 320
-#define PROJECTIONPLANEHEIGHT 200
+#define TILE_SIZE 256
+#define WALL_HEIGHT 256
+#define PROJECTIONPLANEWIDTH 1024
+#define PROJECTIONPLANEHEIGHT 768
 
 
 
-#include <stdio.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <SDL.h>
@@ -39,8 +39,8 @@
 #define ANGLE10 floor(ANGLE5*2)
 #define ANGLE45 floor(ANGLE15*3)
 
-#define MAP_WIDTH 12
-#define MAP_HEIGHT 12
+#define MAP_WIDTH 20
+#define MAP_HEIGHT 20
 
 typedef struct		s_raycast
 {
@@ -124,9 +124,10 @@ typedef struct wolf_f
     t_draw 			draw;
     t_sdl			sdl;
     double			speed;
-    Uint32				buf[HEIGHT][WIDTH];
+    Uint32			buf[HEIGHT][WIDTH];
+    Uint32          buf_js[HEIGHT * WIDTH];
     int             counter_str_on_map;
-    int				for_exit;
+    int				loop;
     char            *name;
     char            **full_map;
     int             **array;
@@ -139,6 +140,12 @@ typedef struct wolf_f
     int				x;
     int				y;
     int				d;
+    int         fPlayerX;
+    int         fPlayerY;
+    int         fPlayerArc;
+    int         fPlayerDistanceToTheProjectionPlane;
+    int         fPlayerHeight;
+    int         fPlayerSpeed;
     int             pause;
     char            *test;
     int             tw;
@@ -156,59 +163,28 @@ typedef struct wolf_f
     double plan;
     double dir;
     double koef;
-} t_wolf;
-
-int     main(int argc, char *argv[]);
-int     ft_valid(t_wolf *wolf);
-void    ft_error(int error, t_wolf *wolf);
-void	ft_free_mas(char **ret);
-int     ft_check_min_size_map(t_wolf *wolf);
-int     ft_check_pos_player(t_wolf *wolf);
-char**  ft_chrlen(char *str);
-void    ft_write_mas_int(int n, t_wolf *wolf, char **str);
-int     ft_check_size_map(t_wolf *wolf);
-void    ft_init_varible(t_wolf *wolf);
-
-SDL_Texture			*load_img(SDL_Renderer *ren, SDL_Surface *bmp, char *imag);
-void				first_ar(t_wolf *wolf, char **str);
-void				check_str(t_wolf *wolf, char **str);
-void				make_arr(t_wolf *wolf, char **str);
-int					**int_malloc(t_wolf *wolf);
-void				check_rest(t_wolf *wolf);
-int					len_int(char *str);
-void				raycasting(t_wolf *wolf);
-void				keys(t_wolf *wolf);
-unsigned int		get_pixel_int(SDL_Surface *SDL_Surfaceace, int x, int y);
-void				put_pixel32(SDL_Surface *SDL_Surfaceace, int x, int y, int pixel);
-SDL_Surface			*load_image(char *path);
-Mix_Music			*load_music(char *path);
-void				ft_game(t_wolf *wolf);
-void				fresh(t_wolf *wolf);
 
 
-
-typedef struct  nw_wolf
-{
 
     // trigonometric tables (the ones with "I" such as ISiTable are "Inverse" table)
-    double        *fSinTable;
-    double        *fISinTable;
-    double        *fCosTable;
-    double        *fICosTable;
-    double        *fTanTable;
-    double        *fITanTable;
-    double        *fFishTable;
-    double        *fXStepTable;
-    double        *fYStepTable;
+    long double        *fSinTable;
+    long double        *fISinTable;
+    long double        *fCosTable;
+    long double        *fICosTable;
+    long double        *fTanTable;
+    long double        *fITanTable;
+    long double        *fFishTable;
+    long double        *fXStepTable;
+    long double        *fYStepTable;
 
 
     // player's attributes
-    int         fPlayerX;
-    int         fPlayerY;
-    int         fPlayerArc;
-    int         fPlayerDistanceToTheProjectionPlane;
-    int         fPlayerHeight;
-    int         fPlayerSpeed;
+//    int         fPlayerX;
+//    int         fPlayerY;
+//    int         fPlayerArc;
+//    int         fPlayerDistanceToTheProjectionPlane;
+//    int         fPlayerHeight;
+//    int         fPlayerSpeed;
 
     // Half of the screen height
     int         fProjectionPlaneYCenter;
@@ -260,8 +236,8 @@ typedef struct  nw_wolf
     int         targetIndex;
     int         length;
     int         height;
-    double      x;
-    double      y;
+    double      x_1;
+    double      y_1;
     double      xOffset;
     double      sourceIndex;
     double      lastSourceIndex;
@@ -269,20 +245,54 @@ typedef struct  nw_wolf
     int         cssColor;
 
 
+} t_wolf;
+
+
+int     main(int argc, char *argv[]);
+int     ft_valid(t_wolf *wolf);
+void    ft_error(int error, t_wolf *wolf);
+void	ft_free_mas(char **ret);
+int     ft_check_min_size_map(t_wolf *wolf);
+int     ft_check_pos_player(t_wolf *wolf);
+char**  ft_chrlen(char *str);
+void    ft_write_mas_int(int n, t_wolf *wolf, char **str);
+int     ft_check_size_map(t_wolf *wolf);
+void    ft_init_varible(t_wolf *wolf);
+
+SDL_Texture			*load_img(SDL_Renderer *ren, SDL_Surface *bmp, char *imag);
+void				first_ar(t_wolf *wolf, char **str);
+void				check_str(t_wolf *wolf, char **str);
+void				make_arr(t_wolf *wolf, char **str);
+int					**int_malloc(t_wolf *wolf);
+void				check_rest(t_wolf *wolf);
+int					len_int(char *str);
+void				raycasting(t_wolf *wolf);
+void				keys(t_wolf *wolf);
+unsigned int		get_pixel_int(SDL_Surface *SDL_Surfaceace, int x, int y);
+void				put_pixel32(SDL_Surface *SDL_Surfaceace, int x, int y, int pixel);
+SDL_Surface			*load_image(char *path);
+Mix_Music			*load_music(char *path);
+void				ft_game(t_wolf *wolf);
+void				fresh(t_wolf *wolf);
+
+long double  *creatMasInt(int count);
+void    loadTexture(t_wolf *wolf);
+void    t_init(t_wolf *wolf);
+void    ft_game_js(t_wolf *wolf);
+void	raycast(t_wolf *wolf);
 
 
 
-}               new_wolf;
+// void    ft_load_texture(t_wolf *wolf);
+// double    arcToRad(t_wolf *wolf);
+// void    drawLine(t_wolf *wolf, double startX, double startY, double endX, double endY, int red, int green, int blue, int alpha);
+// void    drawOverheadMap(t_wolf *wolf);
+// void    drawWallSliceRectangleTinted(t_wolf *wolf);
+// void    drawRayOnOverheadMap(t_wolf *wolf, int x, int y);
+// void    drawPlayerPOVOnOverheadMap(t_wolf *wolf, int x, int y);
 
 
 
-void    ft_load_texture(new_wolf *wolf);
-double    arcToRad(new_wolf *wolf);
-void    drawLine(new_wolf *wolf, double startX, double startY, double endX, double endY, int red, int green, int blue, int alpha);
-void    drawOverheadMap(new_wolf *wolf);
-void    drawWallSliceRectangleTinted(new_wolf *wolf);
-void    drawRayOnOverheadMap(new_wolf *wolf, int x, int y);
-void    drawPlayerPOVOnOverheadMap(new_wolf *wolf, int x, int y);
 
 
 
