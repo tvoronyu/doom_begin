@@ -169,6 +169,17 @@ typedef struct		s_wolf
     int loop2;
     int checkWall;
     char **fMap;
+    float dx;
+    float dy;
+    int playerXCell;
+    int playerYCell;
+    int playerXCellOffset;
+    int playerYCellOffset;
+    int minDistanceToWall;
+    int castArc;
+
+    float tmpX;
+    float tmpY;
 
 }					t_wolf;
 
@@ -231,5 +242,11 @@ char **creatMapArray(int width, int height);
 void	drawWall(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf);
 void	drawCeil(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf);
 void	drawFloor(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf);
+void	ft_test_left(t_wolf *wolf);
+void	ft_test_right(t_wolf *wolf);
+void    ft_check_left_right(t_wolf *wolf);
+void    ft_forward_back(t_wolf *wolf);
+void	drawWall(int x, int y, int width, int height, int xOffset, t_wolf *wolf);
+void	drawFloor(int x, int y, int width, int height, int xOffset, t_wolf *wolf);
 
 #endif

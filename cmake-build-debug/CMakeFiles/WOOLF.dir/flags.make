@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu99
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/tvoronyu/WOOLF/include -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2.framework/Headers -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2_image.framework/Headers -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2_mixer.framework/Headers -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2_ttf.framework/Headers -I/Users/tvoronyu/WOOLF/lib/libft/libft.h 
+C_INCLUDES = -I/Users/tvoronyu/Desktop/doom_begin/include -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2.framework/Headers -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2_image.framework/Headers -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2_mixer.framework/Headers -I/Users/tvoronyu/WOOLF/lib/SDL/SDL2_ttf.framework/Headers -I/Users/tvoronyu/WOOLF/lib/libft/libft.h 
 

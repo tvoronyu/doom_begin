@@ -3,7 +3,7 @@ project(WOOLF C)
 
 set(CMAKE_C_STANDARD 99)
 
-include_directories(/Users/tvoronyu/WOOLF/include)
+include_directories(/Users/tvoronyu/Desktop/doom_begin/include)
 
 #source_group(src)
 
@@ -16,7 +16,7 @@ include_directories(/Users/tvoronyu/WOOLF/lib/libft/libft.h)
 #include_directories(/Users/tvoronyu/CLionProjects/untitled7)
 
 
-add_executable(WOOLF /Users/tvoronyu/WOOLF/src/main.c)
+add_executable(WOOLF /Users/tvoronyu/Desktop/doom_begin/src/main.c)
 #add_library(untitled7 src/game.c)
 #add_subdirectory(untitled7/src)
 #source_group(src/game.c)

@@ -1,17 +1,17 @@
-NAME = wolf3d
+NAME = doom
 
-SRC_WOLF = ./src/main.c \
+SRC = ./src/main.c \
 			./src/game.c \
 			./src/sdl.c \
 			./src/keys.c \
 			./src/keys_2.c \
 			./src/ft_init_varible.c \
 
-OBJECT_WOLF = $(SRC_WOLF:.c=.o)
+OBJECT = $(SRC:.c=.o)
 
-#FLAGS = -Wall -Wextra -Werror
+#FLAGS = -O2 -Wall -Wextra -Werror
 
-INCLUDES_WOLF = -I ./include/
+INCLUDES = -I ./include/
 
 INCLUDES_LIBFT = -I ./lib/libft/
 
@@ -37,23 +37,23 @@ FRAMEWORK_MLX = -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME) : $(OBJECT_WOLF)
+$(NAME) : $(OBJECT)
 	make -C ./lib/libft
 	@echo "file compiled"
-	@gcc -o $(NAME) $(FLAGS) $(LIBFT) $(INCLUDES_SDL2) $(INCLUDES_SDL2_IMAGE) -rpath @loader_path/lib/sdl $(FRAMEWORK_SDL2) $(OBJECT_WOLF) $(INCLUDES_SDL2_TTF) $(INCLUDES_SDL2_MIXER)
+	@gcc -o $(NAME) $(FLAGS) $(LIBFT) $(INCLUDES_SDL2) $(INCLUDES_SDL2_IMAGE) -rpath @loader_path/lib/sdl $(FRAMEWORK_SDL2) $(OBJECT) $(INCLUDES_SDL2_TTF) $(INCLUDES_SDL2_MIXER)
 
 %.o: %.c includes/*.h
-	gcc -g $(FLAGS) -o $@ -c $< $(INCLUDES_WOLF) $(INCLUDES_SDL2) $(INCLUDES_LIBFT) \
+	gcc -g $(FLAGS) -o $@ -c $< $(INCLUDES) $(INCLUDES_SDL2) $(INCLUDES_LIBFT) \
 $(INCLUDES_SDL2_IMAGE) $(INCLUDES_SDL2_TTF) $(INCLUDES_SDL2_MIXER)
 
 %.o: %.c
-	gcc -g 	$(FLAGS) -o $@ -c $< $(INCLUDES_WOLF) $(INCLUDES_SDL2) $(INCLUDES_LIBFT) \
+	gcc -g 	$(FLAGS) -o $@ -c $< $(INCLUDES) $(INCLUDES_SDL2) $(INCLUDES_LIBFT) \
 $(INCLUDES_SDL2_IMAGE) $(INCLUDES_SDL2_TTF) $(INCLUDES_SDL2_MIXER)
 
 	@echo "Wolf compiled"
 clean:
 	make -C ./lib/libft clean
-	/bin/rm -f $(OBJECT_WOLF)
+	/bin/rm -f $(OBJECT)
 	rm -f TAGS
 
 fclean: clean

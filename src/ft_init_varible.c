@@ -112,6 +112,15 @@ void	ft_init_varible(t_wolf *wolf)
     wolf->fProjectionPlaneYCenter = wolf->PROJECTIONPLANEHEIGHT/2;
     wolf->MAP_WIDTH = 12;
     wolf->MAP_HEIGHT = 12;
-    wolf->sdl.wall[0] = load_image("texture/15.jpg");
+    wolf->sdl.wall[0] = load_image("./texture/13_64.jpg");
     wolf->checkWall = 0;
+    wolf->raycast.plan_x = 0;
+    wolf->raycast.plan_y = 66;
+    wolf->speed = 0.05;
+    wolf->koef = 0.05;
+    wolf->tmpX = 0.0;
+    wolf->tmpY = 0.0;
+    wolf->minDistanceToWall = 15;
+//    printf("%f\n", wolf->raycast.plan_x);
+//    printf("%f\n", wolf->raycast.plan_y);
 }
