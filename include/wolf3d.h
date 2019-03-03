@@ -29,6 +29,8 @@
 
 # define WIDTH 1024
 # define HEIGHT 768
+# define N 4
+# include <pthread.h>
 
 typedef struct		s_raycast
 {
@@ -89,6 +91,12 @@ typedef	struct		s_sdl
 	SDL_Texture		*font_text;
 	SDL_Event		event;
 }					t_sdl;
+
+typedef	struct		s_thread
+{
+    int x_start;
+    int x_end;
+}                   t_thread;
 
 typedef struct		s_wolf
 {
@@ -178,10 +186,43 @@ typedef struct		s_wolf
     int minDistanceToWall;
     int castArc;
 
+
+    int 	verticalGrid;
+    int 	horizontalGrid;
+    int 	distToNextVerticalGrid;
+    int 	distToNextHorizontalGrid;
+    float 	xIntersection;
+    float 	yIntersection;
+    float 	distToNextXIntersection;
+    float 	distToNextYIntersection;
+    int 	xGridIndex;
+    int 	yGridIndex;
+    float 	distToVerticalGridBeingHit;
+    float 	distToHorizontalGridBeingHit;
+    int 	castColumn;
+
+    float scaleFactor;
+    float dist;
+    int topOfWall;
+    int bottomOfWall;
+    int xOffset;
+//    int isVerticalHit = 0;
+    int distortedDistance;
+
     float tmpX;
     float tmpY;
 
+
+
 }					t_wolf;
+
+typedef struct	s_threads
+{
+    t_wolf	*wolf;
+    pthread_t	threads;
+    int			n;
+
+}				t_threads;
 
 int					main(int argc, char *argv[]);
 void				ft_read(t_wolf *wolf);
@@ -248,5 +289,11 @@ void    ft_check_left_right(t_wolf *wolf);
 void    ft_forward_back(t_wolf *wolf);
 void	drawWall(int x, int y, int width, int height, int xOffset, t_wolf *wolf);
 void	drawFloor(int x, int y, int width, int height, int xOffset, t_wolf *wolf);
+void	ft_fps(t_wolf *wolf);
+void	ft_init_ttf(t_wolf *wolf);
+void	ft_threads(t_wolf *wolf);
+void	*ft_comand_threads(void *wolf);
+void    ft_render(t_wolf *wolf);
+void    ft_jump(t_wolf *wolf);
 
 #endif

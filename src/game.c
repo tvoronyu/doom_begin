@@ -53,36 +53,145 @@ float arcToRad(float arcAngle, t_wolf *wolf)
 
 void	render_texture(t_wolf *wolf)
 {
-    SDL_UpdateTexture(wolf->sdl.screen, NULL, wolf->buf, WIDTH << 2);
-    SDL_RenderCopy(wolf->sdl.ren, wolf->sdl.screen, NULL, NULL);
-    SDL_RenderPresent(wolf->sdl.ren);
-    SDL_FreeSurface(wolf->sdl.font_surface);
+	SDL_UpdateTexture(wolf->sdl.screen, NULL, wolf->buf, WIDTH << 2);
+	SDL_RenderCopy(wolf->sdl.ren, wolf->sdl.screen, NULL, NULL);
+	SDL_RenderCopy(wolf->sdl.ren,
+				   wolf->sdl.font_text, NULL, &wolf->sdl.font_rect);
+	SDL_RenderPresent(wolf->sdl.ren);
+	SDL_DestroyTexture(wolf->sdl.font_text);
+	SDL_FreeSurface(wolf->sdl.font_surface);
+	TTF_CloseFont(wolf->sdl.font_ttf);
+	free(wolf->test);
+}
+
+void    ft_render_3(t_wolf *wolf)
+{
+    if (wolf->distToHorizontalGridBeingHit < wolf->distToVerticalGridBeingHit)
+    {
+        wolf->dist = wolf->distToHorizontalGridBeingHit / wolf->fFishTable[wolf->castColumn];
+        wolf->distortedDistance = wolf->dist;
+        float ratio = wolf->fPlayerDistanceToTheProjectionPlane / wolf->dist;
+        float scale;
+        wolf->bottomOfWall = (ratio * wolf->fPlayerHeight + wolf->fProjectionPlaneYCenter);
+        if (wolf->checkWall)
+            scale = (wolf->fPlayerDistanceToTheProjectionPlane * (wolf->WALL_HEIGHT * 2) / wolf->dist);
+        else
+            scale = (wolf->fPlayerDistanceToTheProjectionPlane * wolf->WALL_HEIGHT / wolf->dist);
+        wolf->topOfWall = wolf->bottomOfWall - scale;
+        wolf->xOffset = (int)wolf->xIntersection % wolf->TILE_SIZE;
+    }
+    else {
+//			isVerticalHit = 1;
+        wolf->dist = wolf->distToVerticalGridBeingHit / wolf->fFishTable[wolf->castColumn];
+        float ratio = wolf->fPlayerDistanceToTheProjectionPlane / wolf->dist;
+        float scale;
+        wolf->bottomOfWall = (ratio * wolf->fPlayerHeight + wolf->fProjectionPlaneYCenter);
+        if (wolf->checkWall) {
+            printf("fef");
+            scale = (wolf->fPlayerDistanceToTheProjectionPlane * (wolf->WALL_HEIGHT * 2) / wolf->dist);
+        }
+        else
+            scale = (wolf->fPlayerDistanceToTheProjectionPlane * wolf->WALL_HEIGHT / wolf->dist);
+        wolf->topOfWall = wolf->bottomOfWall - scale;
+        wolf->xOffset = (int)wolf->yIntersection % wolf->TILE_SIZE;
+    }
+    wolf->checkWall = 0;
+    drawWall(wolf->castColumn, wolf->topOfWall, 1, (wolf->bottomOfWall - wolf->topOfWall) + 1, wolf->xOffset, wolf);
+    drawCeil(wolf->castColumn, wolf->topOfWall, wolf->bottomOfWall, wolf->bottomOfWall - wolf->topOfWall, wolf->xOffset, wolf);
+    drawFloor(wolf->castColumn, wolf->topOfWall, wolf->bottomOfWall, wolf->bottomOfWall - wolf->topOfWall, wolf->xOffset, wolf);
+    wolf->castArc++;
+    wolf->checkWall = 0;
+    if (wolf->castArc >= wolf->ANGLE360)
+        wolf->castArc -= wolf->ANGLE360;
+}
+
+void    ft_render_2(t_wolf *wolf)
+{
+    if (wolf->castArc < wolf->ANGLE90 || wolf->castArc > wolf->ANGLE270)
+    {
+        wolf->verticalGrid = wolf->TILE_SIZE + (wolf->fPlayerX / wolf->TILE_SIZE) * wolf->TILE_SIZE;
+        wolf->distToNextVerticalGrid = wolf->TILE_SIZE;
+
+        float ytemp = wolf->fTanTable[wolf->castArc] * (wolf->verticalGrid - wolf->fPlayerX);
+        wolf->yIntersection = ytemp + wolf->fPlayerY;
+    }
+    else
+    {
+        wolf->verticalGrid = (wolf->fPlayerX / wolf->TILE_SIZE) * wolf->TILE_SIZE;
+        wolf->distToNextVerticalGrid = -wolf->TILE_SIZE;
+
+        float ytemp = wolf->fTanTable[wolf->castArc] * (wolf->verticalGrid - wolf->fPlayerX);
+        wolf->yIntersection = ytemp + wolf->fPlayerY;
+        wolf->verticalGrid--;
+    }
+    if (wolf->castArc == wolf->ANGLE90 || wolf->castArc == wolf->ANGLE270)
+        wolf->distToVerticalGridBeingHit = 9999999;
+    else
+    {
+        wolf->distToNextYIntersection = wolf->fYStepTable[wolf->castArc];
+        while (1)
+        {
+            wolf->xGridIndex = (wolf->verticalGrid / wolf->TILE_SIZE);
+            wolf->yGridIndex = (int)(wolf->yIntersection / wolf->TILE_SIZE);
+            if ((wolf->xGridIndex >= wolf->MAP_WIDTH) ||
+                (wolf->yGridIndex >= wolf->MAP_HEIGHT) ||
+                wolf->xGridIndex < 0 || wolf->yGridIndex < 0)
+            {
+                wolf->distToVerticalGridBeingHit = 9999999;
+                break;
+            }
+            else if ((wolf->fMap[wolf->yGridIndex][wolf->xGridIndex]) != 'O')
+            {
+//                if ((wolf->fMap[wolf->yGridIndex][wolf->xGridIndex]) == 'Q')
+//                    wolf->checkWall = 0;
+                wolf->distToVerticalGridBeingHit =(wolf->yIntersection - wolf->fPlayerY) * wolf->fISinTable[wolf->castArc];
+//                break;
+
+                break;
+            }
+            else
+            {
+                wolf->yIntersection += wolf->distToNextYIntersection;
+                wolf->verticalGrid += wolf->distToNextVerticalGrid;
+            }
+        }
+
+    }
+    ft_render_3(wolf);
+//		float scaleFactor;
+//		float dist;
+//		int topOfWall;
+//		int bottomOfWall;
+//		int xOffset;
+//		int isVerticalHit = 0;
+//		int distortedDistance;
+
 }
 
 void    ft_render(t_wolf *wolf)
 {
-	int 	verticalGrid;
-	int 	horizontalGrid;
-	int 	distToNextVerticalGrid;
-	int 	distToNextHorizontalGrid;
-	float 	xIntersection;
-	float 	yIntersection;
-	float 	distToNextXIntersection;
-	float 	distToNextYIntersection;
-	int 	xGridIndex;
-	int 	yGridIndex;
-	float 	distToVerticalGridBeingHit;
-	float 	distToHorizontalGridBeingHit;
-	int 	castColumn;
+//	int 	verticalGrid;
+//	int 	horizontalGrid;
+//	int 	distToNextVerticalGrid;
+//	int 	distToNextHorizontalGrid;
+//	float 	xIntersection;
+//	float 	yIntersection;
+//	float 	distToNextXIntersection;
+//	float 	distToNextYIntersection;
+//	int 	xGridIndex;
+//	int 	yGridIndex;
+//	float 	distToVerticalGridBeingHit;
+//	float 	distToHorizontalGridBeingHit;
+//	int 	castColumn;
 
 	wolf->castArc = wolf->fPlayerArc + (-wolf->ANGLE30);
-	castColumn = -1;
+    wolf->castColumn = -1;
 
 	if (wolf->castArc < 0)
 	{
 		wolf->castArc = wolf->ANGLE360 + wolf->castArc;
 	}
-	while (castColumn++ < wolf->PROJECTIONPLANEWIDTH)
+	while (wolf->castColumn++ < wolf->PROJECTIONPLANEWIDTH)
 	{
 //	    if (wolf->checkWall)
 //        {
@@ -96,137 +205,55 @@ void    ft_render(t_wolf *wolf)
 //        }
 		if (wolf->castArc > wolf->ANGLE0 && wolf->castArc < wolf->ANGLE180)
 		{
-			horizontalGrid = (wolf->fPlayerY / wolf->TILE_SIZE) * wolf->TILE_SIZE + wolf->TILE_SIZE;
-			distToNextHorizontalGrid = wolf->TILE_SIZE;
-			float xtemp = wolf->fITanTable[wolf->castArc] * (horizontalGrid - wolf->fPlayerY);
-			xIntersection = xtemp + wolf->fPlayerX;
+            wolf->horizontalGrid = (wolf->fPlayerY / wolf->TILE_SIZE) * wolf->TILE_SIZE + wolf->TILE_SIZE;
+            wolf->distToNextHorizontalGrid = wolf->TILE_SIZE;
+			float xtemp = wolf->fITanTable[wolf->castArc] * (wolf->horizontalGrid - wolf->fPlayerY);
+            wolf->xIntersection = xtemp + wolf->fPlayerX;
 		}
 		else
 		{
-			horizontalGrid = (wolf->fPlayerY / wolf->TILE_SIZE) * wolf->TILE_SIZE;
-			distToNextHorizontalGrid = -wolf->TILE_SIZE;
-			float xtemp = wolf->fITanTable[wolf->castArc] * (horizontalGrid - wolf->fPlayerY);
-			xIntersection = xtemp + wolf->fPlayerX;
-			horizontalGrid--;
+            wolf->horizontalGrid = (wolf->fPlayerY / wolf->TILE_SIZE) * wolf->TILE_SIZE;
+            wolf->distToNextHorizontalGrid = -wolf->TILE_SIZE;
+			float xtemp = wolf->fITanTable[wolf->castArc] * (wolf->horizontalGrid - wolf->fPlayerY);
+            wolf->xIntersection = xtemp + wolf->fPlayerX;
+            wolf->horizontalGrid--;
 		}
+
 		if (wolf->castArc == wolf->ANGLE0 || wolf->castArc == wolf->ANGLE180)
-			distToHorizontalGridBeingHit = 9999999;
+            wolf->distToHorizontalGridBeingHit = 9999999;
 		else
 		{
-			distToNextXIntersection = wolf->fXStepTable[wolf->castArc];
+            wolf->distToNextXIntersection = wolf->fXStepTable[wolf->castArc];
 			while (1)
 			{
-				xGridIndex = (int)(xIntersection / wolf->TILE_SIZE);
-				yGridIndex = (horizontalGrid / wolf->TILE_SIZE);
+                wolf->xGridIndex = (int)(wolf->xIntersection / wolf->TILE_SIZE);
+                wolf->yGridIndex = (wolf->horizontalGrid / wolf->TILE_SIZE);
 
-				if ((xGridIndex >= wolf->MAP_WIDTH) || (yGridIndex >= wolf->MAP_HEIGHT) || xGridIndex < 0 || yGridIndex < 0)
+				if ((wolf->xGridIndex >= wolf->MAP_WIDTH) || (wolf->yGridIndex >= wolf->MAP_HEIGHT) || wolf->xGridIndex < 0 || wolf->yGridIndex < 0)
 				{
-					distToHorizontalGridBeingHit = 9999999;
+                    wolf->distToHorizontalGridBeingHit = 9999999;
 					break;
 				}
-				else if ((wolf->fMap[yGridIndex][xGridIndex]) != 'O')
+				else if ((wolf->fMap[wolf->yGridIndex][wolf->xGridIndex]) != 'O')
 				{
-					distToHorizontalGridBeingHit  = (xIntersection - wolf->fPlayerX) * wolf->fICosTable[wolf->castArc];
+                    wolf->distToHorizontalGridBeingHit  = (wolf->xIntersection - wolf->fPlayerX) * wolf->fICosTable[wolf->castArc];
+//                    printf("%f\n", wolf->distToHorizontalGridBeingHit);
+
+
 					break;
 				}
 				else
 				{
-					xIntersection += distToNextXIntersection;
-					horizontalGrid += distToNextHorizontalGrid;
+                    wolf->xIntersection += wolf->distToNextXIntersection;
+                    wolf->horizontalGrid += wolf->distToNextHorizontalGrid;
 				}
-			}
-		}
-		if (wolf->castArc < wolf->ANGLE90 || wolf->castArc > wolf->ANGLE270)
-		{
-			verticalGrid = wolf->TILE_SIZE + (wolf->fPlayerX / wolf->TILE_SIZE) * wolf->TILE_SIZE;
-			distToNextVerticalGrid = wolf->TILE_SIZE;
 
-			float ytemp = wolf->fTanTable[wolf->castArc] * (verticalGrid - wolf->fPlayerX);
-			yIntersection = ytemp + wolf->fPlayerY;
-		}
-		else
-		{
-			verticalGrid = (wolf->fPlayerX / wolf->TILE_SIZE) * wolf->TILE_SIZE;
-			distToNextVerticalGrid = -wolf->TILE_SIZE;
-
-			float ytemp = wolf->fTanTable[wolf->castArc] * (verticalGrid - wolf->fPlayerX);
-			yIntersection = ytemp + wolf->fPlayerY;
-			verticalGrid--;
-		}
-		if (wolf->castArc == wolf->ANGLE90 || wolf->castArc == wolf->ANGLE270)
-			distToVerticalGridBeingHit = 9999999;
-		else
-		{
-			distToNextYIntersection = wolf->fYStepTable[wolf->castArc];
-			while (1)
-			{
-				xGridIndex = (verticalGrid / wolf->TILE_SIZE);
-				yGridIndex = (int)(yIntersection / wolf->TILE_SIZE);
-				if ((xGridIndex >= wolf->MAP_WIDTH) ||
-					(yGridIndex >= wolf->MAP_HEIGHT) ||
-					xGridIndex < 0 || yGridIndex < 0)
-				{
-					distToVerticalGridBeingHit = 9999999;
-					break;
-				}
-				else if ((wolf->fMap[yGridIndex][xGridIndex]) != 'O')
-				{
-				    if ((wolf->fMap[yGridIndex][xGridIndex]) == 'Q')
-				        wolf->checkWall = 0;
-					distToVerticalGridBeingHit =(yIntersection - wolf->fPlayerY) * wolf->fISinTable[wolf->castArc];
-					break;
-				}
-				else
-				{
-					yIntersection += distToNextYIntersection;
-					verticalGrid += distToNextVerticalGrid;
-				}
 			}
+
+//            exit(0);
 		}
-		float scaleFactor;
-		float dist;
-		int topOfWall;
-		int bottomOfWall;
-		int xOffset;
-		int isVerticalHit = 0;
-		int distortedDistance;
-		if (distToHorizontalGridBeingHit < distToVerticalGridBeingHit)
-		{
-            dist = distToHorizontalGridBeingHit / wolf->fFishTable[castColumn];
-			distortedDistance = dist;
-            float ratio = wolf->fPlayerDistanceToTheProjectionPlane / dist;
-            float scale;
-            bottomOfWall = (ratio * wolf->fPlayerHeight + wolf->fProjectionPlaneYCenter);
-            if (wolf->checkWall)
-                scale = (wolf->fPlayerDistanceToTheProjectionPlane * (wolf->WALL_HEIGHT * 2) / dist);
-            else
-                scale = (wolf->fPlayerDistanceToTheProjectionPlane * wolf->WALL_HEIGHT / dist);
-            topOfWall = bottomOfWall - scale;
-            xOffset = (int)xIntersection % wolf->TILE_SIZE;
-        }
-		else {
-			isVerticalHit = 1;
-            dist = distToVerticalGridBeingHit / wolf->fFishTable[castColumn];
-            float ratio = wolf->fPlayerDistanceToTheProjectionPlane / dist;
-            float scale;
-            bottomOfWall = (ratio * wolf->fPlayerHeight + wolf->fProjectionPlaneYCenter);
-            if (wolf->checkWall) {
-                printf("fef");
-                scale = (wolf->fPlayerDistanceToTheProjectionPlane * (wolf->WALL_HEIGHT * 2) / dist);
-            }
-            else
-                scale = (wolf->fPlayerDistanceToTheProjectionPlane * wolf->WALL_HEIGHT / dist);
-            topOfWall = bottomOfWall - scale;
-            xOffset = (int)yIntersection % wolf->TILE_SIZE;
-        }
-        wolf->checkWall = 0;
-		drawWall(castColumn, topOfWall, 1, (bottomOfWall - topOfWall) + 1, xOffset, wolf);
-		drawCeil(castColumn, topOfWall, bottomOfWall, bottomOfWall - topOfWall, xOffset, wolf);
-		drawFloor(castColumn, topOfWall, bottomOfWall, bottomOfWall - topOfWall, xOffset, wolf);
-		wolf->castArc++;
-		wolf->checkWall = 0;
-		if (wolf->castArc >= wolf->ANGLE360)
-			wolf->castArc -= wolf->ANGLE360;
+        ft_render_2(wolf);
+
 	}
 }
 
@@ -316,26 +343,138 @@ void	drawWall(int x, int y, int width, int height, int xOffset, t_wolf *wolf)
 //	}
 }
 
-void	drawCeil(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf)
-//void	drawCeil(int x, int y, int width, int height, int xOffset, t_wolf *wolf)
+//void	drawCeil(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf)
+void	drawCeil(int x, int y, int width, int height, int xOffset, t_wolf *wolf)
 {
-	int y;
+    int targetIndex = y;
+    for (int row = y; row >= 0; row--)
+    {
+        float ratio = (wolf->WALL_HEIGHT - wolf->fPlayerHeight) / (wolf->fProjectionPlaneYCenter - row);
 
-	y = 0;
-	if (yStart < 0)
-		yStart = 0;
-	if (yStart >= HEIGHT)
-	    yStart = HEIGHT - 1;
-	while (y <= yStart)
-	{
-		wolf->buf[y][x] = (256 * 256 * 200) + (256 * 85) + 100;
-		y++;
-	}
+        int diagonalDistance = floor((wolf->fPlayerDistanceToTheProjectionPlane * ratio)*
+                                        (wolf->fFishTable[x]));
+
+        int yEnd = floor(diagonalDistance * wolf->fSinTable[wolf->castArc]);
+        int xEnd = floor(diagonalDistance * wolf->fCosTable[wolf->castArc]);
+
+        // Translate relative to viewer coordinates:
+        xEnd += wolf->fPlayerX;
+        yEnd += wolf->fPlayerY;
+
+        // Get the tile intersected by ray:
+        int cellX = floor(xEnd / wolf->TILE_SIZE);
+        int cellY = floor(yEnd / wolf->TILE_SIZE);
+        //console.log("cellX="+cellX+" cellY="+cellY);
+
+        //Make sure the tile is within our map
+        if ((cellX < wolf->MAP_WIDTH) && (cellY < wolf->MAP_HEIGHT) && cellX >= 0 && cellY >= 0)
+        {
+            // Find offset of tile and column in texture
+            int tileRow = floor(yEnd % wolf->TILE_SIZE);
+            int tileColumn = floor(xEnd % wolf->TILE_SIZE);
+            // Pixel to draw
+            if (targetIndex < HEIGHT && targetIndex >= 0)
+            {
+//                    unsigned int *pixels;
+//
+//                    pixels = (unsigned int *)wolf->sdl.wall[0]->pixels;
+
+                unsigned int color = get_pixel_int(wolf->sdl.up, tileColumn, tileRow);
+
+                wolf->buf[targetIndex][x] = color;
+            }
+
+            // Go to the next pixel (directly above the current pixel)
+            targetIndex--;
+        }
+    }
 }
 
-void	drawFloor(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf)
-//void	drawFloor(int x, int y, int width, int height, int xOffset, t_wolf *wolf)
+//void	drawFloor(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf)
+void	drawFloor(int x, int y, int width, int height, int xOffset, t_wolf *wolf)
 {
+
+
+    int bytesPerPixel=4;
+    int projectionPlaneCenterY = wolf->fProjectionPlaneYCenter;
+    int lastBottomOfWall = floor(width);
+    int lastTopOfWall = floor(y);
+
+    //*************
+    // FLOOR CASTING at the simplest!  Try to find ways to optimize this, you can do it!
+    //*************
+//    if (this.fFloorTextureBuffer!=undefined)
+//    {
+        // find the first bit so we can just add the width to get the
+        // next row (of the same column)
+        int targetIndex = lastBottomOfWall;
+//        printf("%d\n", lastBottomOfWall);
+        for (int row = lastBottomOfWall; row < wolf->PROJECTIONPLANEHEIGHT; row++)
+        {
+//printf("%d\n", lastBottomOfWall);
+            float straightDistance = (wolf->fPlayerHeight) / (row - projectionPlaneCenterY) *
+                    wolf->fPlayerDistanceToTheProjectionPlane;
+//
+            float actualDistance = straightDistance*
+                               (wolf->fFishTable[x]);
+
+//            printf("%f\n", actualDistance);
+//
+            int yEnd = floor(actualDistance * wolf->fSinTable[wolf->castArc]);
+            int xEnd = floor(actualDistance * wolf->fCosTable[wolf->castArc]);
+
+//            // Translate relative to viewer coordinates:
+            xEnd += wolf->fPlayerX;
+            yEnd += wolf->fPlayerY;
+//
+//
+//            // Get the tile intersected by ray:
+            int cellX = floor(xEnd / wolf->TILE_SIZE);
+            int cellY = floor(yEnd / wolf->TILE_SIZE);
+//            //console.log("cellX="+cellX+" cellY="+cellY);
+//
+//            //Make sure the tile is within our map
+            if (cellX < wolf->MAP_WIDTH && cellY < wolf->MAP_HEIGHT && cellX >= 0 && cellY >= 0)
+            {
+//                // Find offset of tile and column in texture
+                int tileRow = floor(yEnd % wolf->TILE_SIZE);
+                int tileColumn = floor(xEnd % wolf->TILE_SIZE);
+//                // Pixel to draw
+//                int sourceIndex = ;
+
+//                if (sourceIndex > 768432)
+//                printf("%d\n", sourceIndex);
+//                // Cheap shading trick
+                if (targetIndex < HEIGHT && targetIndex >= 0)
+                {
+//                    unsigned int *pixels;
+//
+//                    pixels = (unsigned int *)wolf->sdl.wall[0]->pixels;
+
+                    unsigned int color = get_pixel_int(wolf->sdl.floor, tileColumn, tileRow);
+
+                    wolf->buf[targetIndex][x] = color;
+                }
+
+////                int brighnessLevel=(150/(actualDistance));
+////                var red=Math.floor(this.fFloorTexturePixels[sourceIndex]*brighnessLevel);
+////                var green=Math.floor(this.fFloorTexturePixels[sourceIndex+1]*brighnessLevel);
+////                var blue=Math.floor(this.fFloorTexturePixels[sourceIndex+2]*brighnessLevel);
+////                var alpha=Math.floor(this.fFloorTexturePixels[sourceIndex+3]);
+//
+////
+//
+//                // Draw the pixel
+////                this.offscreenCanvasPixels.data[targetIndex]=red;
+////                this.offscreenCanvasPixels.data[targetIndex+1]=green;
+////                this.offscreenCanvasPixels.data[targetIndex+2]=blue;
+////                this.offscreenCanvasPixels.data[targetIndex+3]=alpha;
+////                wolf->buf[targetIndex][x] = color;
+//                // Go to the next pixel (directly under the current pixel)
+                targetIndex++;
+            }
+        }
+//    }
 
 //	int lastBottomOfWall = floor(width);
 //	int lastTopOfWall = floor(y);
@@ -395,26 +534,34 @@ void	drawFloor(int x, int yStart, int yEnd, int height, int pixels, t_wolf *wolf
 //
 ////		row++;
 //	}
-	if (yEnd >= HEIGHT)
-		yEnd = HEIGHT - 1;
-	if (yEnd < 0)
-	    yEnd = 0;
-	while (yEnd < HEIGHT - 1) {
-		wolf->buf[yEnd][x] = (256 * 256 * 20) + (256 * 255) + 255;
-		yEnd++;
-	}
+//	if (yEnd >= HEIGHT)
+//		yEnd = HEIGHT - 1;
+//	if (yEnd < 0)
+//	    yEnd = 0;
+//	while (yEnd < HEIGHT - 1) {
+//		wolf->buf[yEnd][x] = (256 * 256 * 20) + (256 * 255) + 255;
+//		yEnd++;
+//	}
 }
 
 void	ft_game(t_wolf *wolf)
 {
 	SDL_SetRelativeMouseMode(1);
-	SDL_WarpMouseInWindow(wolf->sdl.win, WIDTH / 2, HEIGHT / 2);
+	SDL_SetRelativeMouseMode(0);
+	SDL_SetRelativeMouseMode(1);
+//	SDL_WarpMouseInWindow(wolf->sdl.win, WIDTH / 2, HEIGHT / 2);
 	Mix_PlayMusic(wolf->sdl.mus[0], -1);
 	while (wolf->loop)
     {
-	    ft_render(wolf);
+        ft_fps(wolf);
+        ft_init_ttf(wolf);
+        SDL_WarpMouseInWindow(wolf->sdl.win, WIDTH / 2, HEIGHT / 2);
+//        ft_threads(wolf);
+
+        ft_render(wolf);
 	    render_texture(wolf);
 		keys(wolf);
+        ft_jump(wolf);
 	}
 	SDL_DestroyTexture(wolf->sdl.screen);
 	TTF_Quit();

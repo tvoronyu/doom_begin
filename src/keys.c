@@ -62,14 +62,15 @@ void	ft_keys_3(t_wolf *wolf)
 
 void	ft_keys_4(t_wolf *wolf)
 {
-	if (wolf->keys[SDL_SCANCODE_Q] && wolf->fPlayerHeight + 2 < wolf->WALL_HEIGHT)
+	if (wolf->keys[SDL_SCANCODE_Q] && wolf->fPlayerHeight < wolf->WALL_HEIGHT - 20)
 	{
-		wolf->fPlayerHeight += 2;
+		wolf->fPlayerHeight += 5;
 	}
 	if (wolf->keys[SDL_SCANCODE_E] && wolf->fPlayerHeight - 2 > 10)
 	{
-		wolf->fPlayerHeight -= 2;
+		wolf->fPlayerHeight -= 5;
 	}
+
     if (wolf->keys[SDL_SCANCODE_D])
     {
         wolf->dx = (wolf->raycast.plan_x * wolf->speed);
@@ -126,21 +127,23 @@ void	ft_keys_4(t_wolf *wolf)
 //        printf("X%d\n", wolf->playerXCellOffset);
 //        printf("Y%d\n", wolf->playerYCellOffset);
 
-        if (wolf->playerYCell > 1 && wolf->playerXCell < (wolf->MAP_HEIGHT - 1))
+//        if (wolf->playerYCell > 1 && wolf->playerXCell < (wolf->MAP_HEIGHT - 1))
             wolf->fPlayerY -= (int)wolf->dy;
-        else if (wolf->playerYCell == 1 && wolf->playerYCellOffset - 3 > wolf->minDistanceToWall)
-            wolf->fPlayerY -= (int)wolf->dy;
-        else if (wolf->playerYCell == wolf->MAP_HEIGHT - 2 && wolf->playerYCellOffset - 5 > (wolf->TILE_SIZE - wolf->minDistanceToWall))
-            wolf->fPlayerX -= (int)wolf->dx;
-        if (wolf->playerYCell > 1 && wolf->playerXCell < (wolf->MAP_WIDTH - 1))
-            wolf->fPlayerX -= (int)wolf->dx;
-        else if (wolf->playerXCell == 1 && wolf->playerXCellOffset - 5 > wolf->minDistanceToWall)
-            wolf->fPlayerX -= (int)wolf->dx;
-        else if (wolf->playerXCell == wolf->MAP_WIDTH - 2 && wolf->playerXCellOffset - 5 > (wolf->TILE_SIZE - wolf->minDistanceToWall))
+//        else if (wolf->playerYCell == 1 && wolf->playerYCellOffset - 3 > wolf->minDistanceToWall)
+//            wolf->fPlayerY -= (int)wolf->dy;
+//        else if (wolf->playerYCell == wolf->MAP_HEIGHT - 2 && wolf->playerYCellOffset - 5 > (wolf->TILE_SIZE - wolf->minDistanceToWall))
+//            wolf->fPlayerX -= (int)wolf->dx;
+//        if (wolf->playerYCell > 1 && wolf->playerXCell < (wolf->MAP_WIDTH - 1))
+//            wolf->fPlayerX -= (int)wolf->dx;
+//        else if (wolf->playerXCell == 1 && wolf->playerXCellOffset - 5 > wolf->minDistanceToWall)
+//            wolf->fPlayerX -= (int)wolf->dx;
+//        else if (wolf->playerXCell == wolf->MAP_WIDTH - 2 && wolf->playerXCellOffset - 5 > (wolf->TILE_SIZE - wolf->minDistanceToWall))
             wolf->fPlayerX -= (int)wolf->dx;
 
 //        printf("AX = %f\n", wolf->dx);
 //        printf("AY = %f\n", wolf->dy);
+//        printf("Y = %d\n", wolf->fPlayerY);
+//        printf("X = %d\n", wolf->fPlayerX);
     }
 }
 
@@ -264,9 +267,14 @@ void    ft_check_left_right(t_wolf *wolf)
 
 void	ft_keys_1(t_wolf *wolf)
 {
-    if (wolf->keys[SDL_SCANCODE_RIGHT])
+    if (wolf->keys[SDL_SCANCODE_LSHIFT] == 1)
+        wolf->fPlayerSpeed = 60;
+    else
     {
-
+        if (wolf->keys[SDL_SCANCODE_LALT] == 1)
+            wolf->fPlayerSpeed = 15;
+        else
+            wolf->fPlayerSpeed = 30;
     }
 }
 
