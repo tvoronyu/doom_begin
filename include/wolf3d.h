@@ -191,18 +191,18 @@ typedef struct		s_wolf
     int 	horizontalGrid;
     int 	distToNextVerticalGrid;
     int 	distToNextHorizontalGrid;
-	double 	xIntersection;
-	double 	yIntersection;
-    double	distToNextXIntersection;
-	double 	distToNextYIntersection;
+	float 	xIntersection;
+	float 	yIntersection;
+	float	distToNextXIntersection;
+	float 	distToNextYIntersection;
     int 	xGridIndex;
     int 	yGridIndex;
-    double	distToVerticalGridBeingHit;
-	double 	distToHorizontalGridBeingHit;
+    float	distToVerticalGridBeingHit;
+    float 	distToHorizontalGridBeingHit;
     int 	castColumn;
 
     float scaleFactor;
-    float dist;
+    double dist;
     int topOfWall;
     int bottomOfWall;
     int xOffset;
@@ -214,6 +214,17 @@ typedef struct		s_wolf
 
     int  ccc;
 
+    float *hor;
+
+    int lenHor;
+
+    float *ver;
+
+    float *height;
+
+    int lenHeight;
+
+    int lenVer;
 
 
 }					t_wolf;
@@ -297,5 +308,7 @@ void	ft_threads(t_wolf *wolf);
 void	*ft_comand_threads(void *wolf);
 void    ft_render(t_wolf *wolf);
 void    ft_jump(t_wolf *wolf);
+float *makeMas(float value, float *dist, int len);
+
 
 #endif

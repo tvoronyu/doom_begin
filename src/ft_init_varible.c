@@ -124,6 +124,16 @@ void	ft_init_varible(t_wolf *wolf)
     wolf->tmpY = 0.0;
     wolf->ccc = 0;
     wolf->minDistanceToWall = 15;
+    wolf->lenHor = 0;
+    wolf->lenVer = 0;
+
+    wolf->hor = (float*)malloc(sizeof(float) * 1);
+    wolf->ver = (float*)malloc(sizeof(float) * 1);
+    wolf->height = (float*)malloc(sizeof(float) * 1);
+
+    wolf->hor[0] = 0.0;
+
+    wolf->lenHeight = 0;
 //    printf("%f\n", wolf->raycast.plan_x);
 //    printf("%f\n", wolf->raycast.plan_y);
 }
