@@ -45,5 +45,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/WOOLF.dir/DependInfo.cmake"
+  "CMakeFiles/DOOMM.dir/DependInfo.cmake"
   )

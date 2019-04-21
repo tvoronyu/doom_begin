@@ -103,8 +103,8 @@ void	ft_init_varible(t_wolf *wolf)
     wolf->ANGLE0 = 0;
     wolf->ANGLE5 = (wolf->ANGLE30/6);
     wolf->ANGLE10 = (wolf->ANGLE5*2);
-    wolf->fPlayerX = 460;
-    wolf->fPlayerY = 610;
+    wolf->fPlayerX = 330;
+    wolf->fPlayerY = 330;
     wolf->fPlayerArc = wolf->ANGLE0;
     wolf->fPlayerDistanceToTheProjectionPlane = 1024 / 2 / (tan((3.14 / 180) * 30));
     wolf->fPlayerHeight = 130;
@@ -134,6 +134,12 @@ void	ft_init_varible(t_wolf *wolf)
     wolf->hor[0] = 0.0;
 
     wolf->lenHeight = 0;
+
+//    t_wall wall[100];
+wolf->maxHeightPlayer = 260;
+    wolf->wall = (t_wall*)malloc(sizeof(t_wall) * 100);
+//    wolf->wall = wall;
+
 //    printf("%f\n", wolf->raycast.plan_x);
 //    printf("%f\n", wolf->raycast.plan_y);
 }

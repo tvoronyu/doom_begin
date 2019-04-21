@@ -56,6 +56,15 @@ typedef struct		s_raycast
 	int				step_y;
 }					t_raycast;
 
+
+typedef struct      s_wall
+{
+    int             number;
+    float           dist_x;
+    float           dist_y;
+    int             height_wall;
+}                   t_wall;
+
 typedef struct		s_draw
 {
 	double			weight;
@@ -104,6 +113,7 @@ typedef struct		s_wolf
 	t_raycast		raycast;
 	t_draw			draw;
 	t_sdl			sdl;
+	t_wall          *wall;
 	double			speed;
 	Uint32			buf[HEIGHT][WIDTH];
 	int				counter_str_on_map;
@@ -185,6 +195,8 @@ typedef struct		s_wolf
     int playerYCellOffset;
     int minDistanceToWall;
     int castArc;
+
+    int maxHeightPlayer;
 
 
     int 	verticalGrid;

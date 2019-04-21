@@ -59,45 +59,45 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tvoronyu/Desktop/doom_begin
+CMAKE_SOURCE_DIR = /Users/tvoronyu/new_doom
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/tvoronyu/new_doom/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/WOOLF.dir
+# Target rules for target CMakeFiles/DOOMM.dir
 
 # All Build rule for target.
-CMakeFiles/WOOLF.dir/all:
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/depend
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tvoronyu/Desktop/doom_begin/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target WOOLF"
-.PHONY : CMakeFiles/WOOLF.dir/all
+CMakeFiles/DOOMM.dir/all:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/depend
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tvoronyu/new_doom/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 "Built target DOOMM"
+.PHONY : CMakeFiles/DOOMM.dir/all
 
 # Include target in all.
-all: CMakeFiles/WOOLF.dir/all
+all: CMakeFiles/DOOMM.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/WOOLF.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/WOOLF.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/WOOLF.dir/rule
+CMakeFiles/DOOMM.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/new_doom/cmake-build-debug/CMakeFiles 28
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DOOMM.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/new_doom/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/DOOMM.dir/rule
 
 # Convenience name for target.
-WOOLF: CMakeFiles/WOOLF.dir/rule
+DOOMM: CMakeFiles/DOOMM.dir/rule
 
-.PHONY : WOOLF
-
-# clean rule for target.
-CMakeFiles/WOOLF.dir/clean:
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/clean
-.PHONY : CMakeFiles/WOOLF.dir/clean
+.PHONY : DOOMM
 
 # clean rule for target.
-clean: CMakeFiles/WOOLF.dir/clean
+CMakeFiles/DOOMM.dir/clean:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/clean
+.PHONY : CMakeFiles/DOOMM.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/DOOMM.dir/clean
 
 .PHONY : clean
 

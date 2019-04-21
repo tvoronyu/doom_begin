@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tvoronyu/Desktop/doom_begin
+CMAKE_SOURCE_DIR = /Users/tvoronyu/new_doom
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/tvoronyu/new_doom/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug/CMakeFiles /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/new_doom/cmake-build-debug/CMakeFiles /Users/tvoronyu/new_doom/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/Desktop/doom_begin/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tvoronyu/new_doom/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,692 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named WOOLF
+# Target rules for targets named DOOMM
 
 # Build rule for target.
-WOOLF: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 WOOLF
-.PHONY : WOOLF
+DOOMM: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DOOMM
+.PHONY : DOOMM
 
 # fast build rule for target.
-WOOLF/fast:
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/build
-.PHONY : WOOLF/fast
+DOOMM/fast:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/build
+.PHONY : DOOMM/fast
+
+lib/libft/ft_bzero.o: lib/libft/ft_bzero.c.o
+
+.PHONY : lib/libft/ft_bzero.o
+
+# target to build an object file
+lib/libft/ft_bzero.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_bzero.c.o
+.PHONY : lib/libft/ft_bzero.c.o
+
+lib/libft/ft_bzero.i: lib/libft/ft_bzero.c.i
+
+.PHONY : lib/libft/ft_bzero.i
+
+# target to preprocess a source file
+lib/libft/ft_bzero.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_bzero.c.i
+.PHONY : lib/libft/ft_bzero.c.i
+
+lib/libft/ft_bzero.s: lib/libft/ft_bzero.c.s
+
+.PHONY : lib/libft/ft_bzero.s
+
+# target to generate assembly for a file
+lib/libft/ft_bzero.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_bzero.c.s
+.PHONY : lib/libft/ft_bzero.c.s
+
+lib/libft/ft_itoa.o: lib/libft/ft_itoa.c.o
+
+.PHONY : lib/libft/ft_itoa.o
+
+# target to build an object file
+lib/libft/ft_itoa.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_itoa.c.o
+.PHONY : lib/libft/ft_itoa.c.o
+
+lib/libft/ft_itoa.i: lib/libft/ft_itoa.c.i
+
+.PHONY : lib/libft/ft_itoa.i
+
+# target to preprocess a source file
+lib/libft/ft_itoa.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_itoa.c.i
+.PHONY : lib/libft/ft_itoa.c.i
+
+lib/libft/ft_itoa.s: lib/libft/ft_itoa.c.s
+
+.PHONY : lib/libft/ft_itoa.s
+
+# target to generate assembly for a file
+lib/libft/ft_itoa.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_itoa.c.s
+.PHONY : lib/libft/ft_itoa.c.s
+
+lib/libft/ft_memalloc.o: lib/libft/ft_memalloc.c.o
+
+.PHONY : lib/libft/ft_memalloc.o
+
+# target to build an object file
+lib/libft/ft_memalloc.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memalloc.c.o
+.PHONY : lib/libft/ft_memalloc.c.o
+
+lib/libft/ft_memalloc.i: lib/libft/ft_memalloc.c.i
+
+.PHONY : lib/libft/ft_memalloc.i
+
+# target to preprocess a source file
+lib/libft/ft_memalloc.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memalloc.c.i
+.PHONY : lib/libft/ft_memalloc.c.i
+
+lib/libft/ft_memalloc.s: lib/libft/ft_memalloc.c.s
+
+.PHONY : lib/libft/ft_memalloc.s
+
+# target to generate assembly for a file
+lib/libft/ft_memalloc.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memalloc.c.s
+.PHONY : lib/libft/ft_memalloc.c.s
+
+lib/libft/ft_memchr.o: lib/libft/ft_memchr.c.o
+
+.PHONY : lib/libft/ft_memchr.o
+
+# target to build an object file
+lib/libft/ft_memchr.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memchr.c.o
+.PHONY : lib/libft/ft_memchr.c.o
+
+lib/libft/ft_memchr.i: lib/libft/ft_memchr.c.i
+
+.PHONY : lib/libft/ft_memchr.i
+
+# target to preprocess a source file
+lib/libft/ft_memchr.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memchr.c.i
+.PHONY : lib/libft/ft_memchr.c.i
+
+lib/libft/ft_memchr.s: lib/libft/ft_memchr.c.s
+
+.PHONY : lib/libft/ft_memchr.s
+
+# target to generate assembly for a file
+lib/libft/ft_memchr.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memchr.c.s
+.PHONY : lib/libft/ft_memchr.c.s
+
+lib/libft/ft_memset.o: lib/libft/ft_memset.c.o
+
+.PHONY : lib/libft/ft_memset.o
+
+# target to build an object file
+lib/libft/ft_memset.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memset.c.o
+.PHONY : lib/libft/ft_memset.c.o
+
+lib/libft/ft_memset.i: lib/libft/ft_memset.c.i
+
+.PHONY : lib/libft/ft_memset.i
+
+# target to preprocess a source file
+lib/libft/ft_memset.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memset.c.i
+.PHONY : lib/libft/ft_memset.c.i
+
+lib/libft/ft_memset.s: lib/libft/ft_memset.c.s
+
+.PHONY : lib/libft/ft_memset.s
+
+# target to generate assembly for a file
+lib/libft/ft_memset.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_memset.c.s
+.PHONY : lib/libft/ft_memset.c.s
+
+lib/libft/ft_minus.o: lib/libft/ft_minus.c.o
+
+.PHONY : lib/libft/ft_minus.o
+
+# target to build an object file
+lib/libft/ft_minus.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_minus.c.o
+.PHONY : lib/libft/ft_minus.c.o
+
+lib/libft/ft_minus.i: lib/libft/ft_minus.c.i
+
+.PHONY : lib/libft/ft_minus.i
+
+# target to preprocess a source file
+lib/libft/ft_minus.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_minus.c.i
+.PHONY : lib/libft/ft_minus.c.i
+
+lib/libft/ft_minus.s: lib/libft/ft_minus.c.s
+
+.PHONY : lib/libft/ft_minus.s
+
+# target to generate assembly for a file
+lib/libft/ft_minus.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_minus.c.s
+.PHONY : lib/libft/ft_minus.c.s
+
+lib/libft/ft_putchar_fd.o: lib/libft/ft_putchar_fd.c.o
+
+.PHONY : lib/libft/ft_putchar_fd.o
+
+# target to build an object file
+lib/libft/ft_putchar_fd.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putchar_fd.c.o
+.PHONY : lib/libft/ft_putchar_fd.c.o
+
+lib/libft/ft_putchar_fd.i: lib/libft/ft_putchar_fd.c.i
+
+.PHONY : lib/libft/ft_putchar_fd.i
+
+# target to preprocess a source file
+lib/libft/ft_putchar_fd.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putchar_fd.c.i
+.PHONY : lib/libft/ft_putchar_fd.c.i
+
+lib/libft/ft_putchar_fd.s: lib/libft/ft_putchar_fd.c.s
+
+.PHONY : lib/libft/ft_putchar_fd.s
+
+# target to generate assembly for a file
+lib/libft/ft_putchar_fd.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putchar_fd.c.s
+.PHONY : lib/libft/ft_putchar_fd.c.s
+
+lib/libft/ft_putendl.o: lib/libft/ft_putendl.c.o
+
+.PHONY : lib/libft/ft_putendl.o
+
+# target to build an object file
+lib/libft/ft_putendl.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putendl.c.o
+.PHONY : lib/libft/ft_putendl.c.o
+
+lib/libft/ft_putendl.i: lib/libft/ft_putendl.c.i
+
+.PHONY : lib/libft/ft_putendl.i
+
+# target to preprocess a source file
+lib/libft/ft_putendl.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putendl.c.i
+.PHONY : lib/libft/ft_putendl.c.i
+
+lib/libft/ft_putendl.s: lib/libft/ft_putendl.c.s
+
+.PHONY : lib/libft/ft_putendl.s
+
+# target to generate assembly for a file
+lib/libft/ft_putendl.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putendl.c.s
+.PHONY : lib/libft/ft_putendl.c.s
+
+lib/libft/ft_putendl_fd.o: lib/libft/ft_putendl_fd.c.o
+
+.PHONY : lib/libft/ft_putendl_fd.o
+
+# target to build an object file
+lib/libft/ft_putendl_fd.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putendl_fd.c.o
+.PHONY : lib/libft/ft_putendl_fd.c.o
+
+lib/libft/ft_putendl_fd.i: lib/libft/ft_putendl_fd.c.i
+
+.PHONY : lib/libft/ft_putendl_fd.i
+
+# target to preprocess a source file
+lib/libft/ft_putendl_fd.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putendl_fd.c.i
+.PHONY : lib/libft/ft_putendl_fd.c.i
+
+lib/libft/ft_putendl_fd.s: lib/libft/ft_putendl_fd.c.s
+
+.PHONY : lib/libft/ft_putendl_fd.s
+
+# target to generate assembly for a file
+lib/libft/ft_putendl_fd.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putendl_fd.c.s
+.PHONY : lib/libft/ft_putendl_fd.c.s
+
+lib/libft/ft_putstr_fd.o: lib/libft/ft_putstr_fd.c.o
+
+.PHONY : lib/libft/ft_putstr_fd.o
+
+# target to build an object file
+lib/libft/ft_putstr_fd.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putstr_fd.c.o
+.PHONY : lib/libft/ft_putstr_fd.c.o
+
+lib/libft/ft_putstr_fd.i: lib/libft/ft_putstr_fd.c.i
+
+.PHONY : lib/libft/ft_putstr_fd.i
+
+# target to preprocess a source file
+lib/libft/ft_putstr_fd.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putstr_fd.c.i
+.PHONY : lib/libft/ft_putstr_fd.c.i
+
+lib/libft/ft_putstr_fd.s: lib/libft/ft_putstr_fd.c.s
+
+.PHONY : lib/libft/ft_putstr_fd.s
+
+# target to generate assembly for a file
+lib/libft/ft_putstr_fd.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_putstr_fd.c.s
+.PHONY : lib/libft/ft_putstr_fd.c.s
+
+lib/libft/ft_strchr.o: lib/libft/ft_strchr.c.o
+
+.PHONY : lib/libft/ft_strchr.o
+
+# target to build an object file
+lib/libft/ft_strchr.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strchr.c.o
+.PHONY : lib/libft/ft_strchr.c.o
+
+lib/libft/ft_strchr.i: lib/libft/ft_strchr.c.i
+
+.PHONY : lib/libft/ft_strchr.i
+
+# target to preprocess a source file
+lib/libft/ft_strchr.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strchr.c.i
+.PHONY : lib/libft/ft_strchr.c.i
+
+lib/libft/ft_strchr.s: lib/libft/ft_strchr.c.s
+
+.PHONY : lib/libft/ft_strchr.s
+
+# target to generate assembly for a file
+lib/libft/ft_strchr.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strchr.c.s
+.PHONY : lib/libft/ft_strchr.c.s
+
+lib/libft/ft_strdel.o: lib/libft/ft_strdel.c.o
+
+.PHONY : lib/libft/ft_strdel.o
+
+# target to build an object file
+lib/libft/ft_strdel.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strdel.c.o
+.PHONY : lib/libft/ft_strdel.c.o
+
+lib/libft/ft_strdel.i: lib/libft/ft_strdel.c.i
+
+.PHONY : lib/libft/ft_strdel.i
+
+# target to preprocess a source file
+lib/libft/ft_strdel.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strdel.c.i
+.PHONY : lib/libft/ft_strdel.c.i
+
+lib/libft/ft_strdel.s: lib/libft/ft_strdel.c.s
+
+.PHONY : lib/libft/ft_strdel.s
+
+# target to generate assembly for a file
+lib/libft/ft_strdel.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strdel.c.s
+.PHONY : lib/libft/ft_strdel.c.s
+
+lib/libft/ft_strdup.o: lib/libft/ft_strdup.c.o
+
+.PHONY : lib/libft/ft_strdup.o
+
+# target to build an object file
+lib/libft/ft_strdup.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strdup.c.o
+.PHONY : lib/libft/ft_strdup.c.o
+
+lib/libft/ft_strdup.i: lib/libft/ft_strdup.c.i
+
+.PHONY : lib/libft/ft_strdup.i
+
+# target to preprocess a source file
+lib/libft/ft_strdup.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strdup.c.i
+.PHONY : lib/libft/ft_strdup.c.i
+
+lib/libft/ft_strdup.s: lib/libft/ft_strdup.c.s
+
+.PHONY : lib/libft/ft_strdup.s
+
+# target to generate assembly for a file
+lib/libft/ft_strdup.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strdup.c.s
+.PHONY : lib/libft/ft_strdup.c.s
+
+lib/libft/ft_strjoin.o: lib/libft/ft_strjoin.c.o
+
+.PHONY : lib/libft/ft_strjoin.o
+
+# target to build an object file
+lib/libft/ft_strjoin.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strjoin.c.o
+.PHONY : lib/libft/ft_strjoin.c.o
+
+lib/libft/ft_strjoin.i: lib/libft/ft_strjoin.c.i
+
+.PHONY : lib/libft/ft_strjoin.i
+
+# target to preprocess a source file
+lib/libft/ft_strjoin.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strjoin.c.i
+.PHONY : lib/libft/ft_strjoin.c.i
+
+lib/libft/ft_strjoin.s: lib/libft/ft_strjoin.c.s
+
+.PHONY : lib/libft/ft_strjoin.s
+
+# target to generate assembly for a file
+lib/libft/ft_strjoin.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strjoin.c.s
+.PHONY : lib/libft/ft_strjoin.c.s
+
+lib/libft/ft_strlen.o: lib/libft/ft_strlen.c.o
+
+.PHONY : lib/libft/ft_strlen.o
+
+# target to build an object file
+lib/libft/ft_strlen.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strlen.c.o
+.PHONY : lib/libft/ft_strlen.c.o
+
+lib/libft/ft_strlen.i: lib/libft/ft_strlen.c.i
+
+.PHONY : lib/libft/ft_strlen.i
+
+# target to preprocess a source file
+lib/libft/ft_strlen.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strlen.c.i
+.PHONY : lib/libft/ft_strlen.c.i
+
+lib/libft/ft_strlen.s: lib/libft/ft_strlen.c.s
+
+.PHONY : lib/libft/ft_strlen.s
+
+# target to generate assembly for a file
+lib/libft/ft_strlen.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strlen.c.s
+.PHONY : lib/libft/ft_strlen.c.s
+
+lib/libft/ft_strnew.o: lib/libft/ft_strnew.c.o
+
+.PHONY : lib/libft/ft_strnew.o
+
+# target to build an object file
+lib/libft/ft_strnew.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strnew.c.o
+.PHONY : lib/libft/ft_strnew.c.o
+
+lib/libft/ft_strnew.i: lib/libft/ft_strnew.c.i
+
+.PHONY : lib/libft/ft_strnew.i
+
+# target to preprocess a source file
+lib/libft/ft_strnew.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strnew.c.i
+.PHONY : lib/libft/ft_strnew.c.i
+
+lib/libft/ft_strnew.s: lib/libft/ft_strnew.c.s
+
+.PHONY : lib/libft/ft_strnew.s
+
+# target to generate assembly for a file
+lib/libft/ft_strnew.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strnew.c.s
+.PHONY : lib/libft/ft_strnew.c.s
+
+lib/libft/ft_strsub.o: lib/libft/ft_strsub.c.o
+
+.PHONY : lib/libft/ft_strsub.o
+
+# target to build an object file
+lib/libft/ft_strsub.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strsub.c.o
+.PHONY : lib/libft/ft_strsub.c.o
+
+lib/libft/ft_strsub.i: lib/libft/ft_strsub.c.i
+
+.PHONY : lib/libft/ft_strsub.i
+
+# target to preprocess a source file
+lib/libft/ft_strsub.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strsub.c.i
+.PHONY : lib/libft/ft_strsub.c.i
+
+lib/libft/ft_strsub.s: lib/libft/ft_strsub.c.s
+
+.PHONY : lib/libft/ft_strsub.s
+
+# target to generate assembly for a file
+lib/libft/ft_strsub.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_strsub.c.s
+.PHONY : lib/libft/ft_strsub.c.s
+
+lib/libft/ft_tolower.o: lib/libft/ft_tolower.c.o
+
+.PHONY : lib/libft/ft_tolower.o
+
+# target to build an object file
+lib/libft/ft_tolower.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_tolower.c.o
+.PHONY : lib/libft/ft_tolower.c.o
+
+lib/libft/ft_tolower.i: lib/libft/ft_tolower.c.i
+
+.PHONY : lib/libft/ft_tolower.i
+
+# target to preprocess a source file
+lib/libft/ft_tolower.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_tolower.c.i
+.PHONY : lib/libft/ft_tolower.c.i
+
+lib/libft/ft_tolower.s: lib/libft/ft_tolower.c.s
+
+.PHONY : lib/libft/ft_tolower.s
+
+# target to generate assembly for a file
+lib/libft/ft_tolower.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/lib/libft/ft_tolower.c.s
+.PHONY : lib/libft/ft_tolower.c.s
+
+src/ft_fps.o: src/ft_fps.c.o
+
+.PHONY : src/ft_fps.o
+
+# target to build an object file
+src/ft_fps.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/ft_fps.c.o
+.PHONY : src/ft_fps.c.o
+
+src/ft_fps.i: src/ft_fps.c.i
+
+.PHONY : src/ft_fps.i
+
+# target to preprocess a source file
+src/ft_fps.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/ft_fps.c.i
+.PHONY : src/ft_fps.c.i
+
+src/ft_fps.s: src/ft_fps.c.s
+
+.PHONY : src/ft_fps.s
+
+# target to generate assembly for a file
+src/ft_fps.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/ft_fps.c.s
+.PHONY : src/ft_fps.c.s
+
+src/ft_init_varible.o: src/ft_init_varible.c.o
+
+.PHONY : src/ft_init_varible.o
+
+# target to build an object file
+src/ft_init_varible.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/ft_init_varible.c.o
+.PHONY : src/ft_init_varible.c.o
+
+src/ft_init_varible.i: src/ft_init_varible.c.i
+
+.PHONY : src/ft_init_varible.i
+
+# target to preprocess a source file
+src/ft_init_varible.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/ft_init_varible.c.i
+.PHONY : src/ft_init_varible.c.i
+
+src/ft_init_varible.s: src/ft_init_varible.c.s
+
+.PHONY : src/ft_init_varible.s
+
+# target to generate assembly for a file
+src/ft_init_varible.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/ft_init_varible.c.s
+.PHONY : src/ft_init_varible.c.s
+
+src/game.o: src/game.c.o
+
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/game.c.o
+.PHONY : src/game.c.o
+
+src/game.i: src/game.c.i
+
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/game.c.i
+.PHONY : src/game.c.i
+
+src/game.s: src/game.c.s
+
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/game.c.s
+.PHONY : src/game.c.s
+
+src/get_next_line.o: src/get_next_line.c.o
+
+.PHONY : src/get_next_line.o
+
+# target to build an object file
+src/get_next_line.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/get_next_line.c.o
+.PHONY : src/get_next_line.c.o
+
+src/get_next_line.i: src/get_next_line.c.i
+
+.PHONY : src/get_next_line.i
+
+# target to preprocess a source file
+src/get_next_line.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/get_next_line.c.i
+.PHONY : src/get_next_line.c.i
+
+src/get_next_line.s: src/get_next_line.c.s
+
+.PHONY : src/get_next_line.s
+
+# target to generate assembly for a file
+src/get_next_line.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/get_next_line.c.s
+.PHONY : src/get_next_line.c.s
+
+src/jump.o: src/jump.c.o
+
+.PHONY : src/jump.o
+
+# target to build an object file
+src/jump.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/jump.c.o
+.PHONY : src/jump.c.o
+
+src/jump.i: src/jump.c.i
+
+.PHONY : src/jump.i
+
+# target to preprocess a source file
+src/jump.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/jump.c.i
+.PHONY : src/jump.c.i
+
+src/jump.s: src/jump.c.s
+
+.PHONY : src/jump.s
+
+# target to generate assembly for a file
+src/jump.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/jump.c.s
+.PHONY : src/jump.c.s
+
+src/keys.o: src/keys.c.o
+
+.PHONY : src/keys.o
+
+# target to build an object file
+src/keys.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/keys.c.o
+.PHONY : src/keys.c.o
+
+src/keys.i: src/keys.c.i
+
+.PHONY : src/keys.i
+
+# target to preprocess a source file
+src/keys.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/keys.c.i
+.PHONY : src/keys.c.i
+
+src/keys.s: src/keys.c.s
+
+.PHONY : src/keys.s
+
+# target to generate assembly for a file
+src/keys.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/keys.c.s
+.PHONY : src/keys.c.s
+
+src/keys_2.o: src/keys_2.c.o
+
+.PHONY : src/keys_2.o
+
+# target to build an object file
+src/keys_2.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/keys_2.c.o
+.PHONY : src/keys_2.c.o
+
+src/keys_2.i: src/keys_2.c.i
+
+.PHONY : src/keys_2.i
+
+# target to preprocess a source file
+src/keys_2.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/keys_2.c.i
+.PHONY : src/keys_2.c.i
+
+src/keys_2.s: src/keys_2.c.s
+
+.PHONY : src/keys_2.s
+
+# target to generate assembly for a file
+src/keys_2.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/keys_2.c.s
+.PHONY : src/keys_2.c.s
 
 src/main.o: src/main.c.o
 
@@ -129,7 +804,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -138,7 +813,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -147,8 +822,35 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/WOOLF.dir/build.make CMakeFiles/WOOLF.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/main.c.s
 .PHONY : src/main.c.s
+
+src/sdl.o: src/sdl.c.o
+
+.PHONY : src/sdl.o
+
+# target to build an object file
+src/sdl.c.o:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/sdl.c.o
+.PHONY : src/sdl.c.o
+
+src/sdl.i: src/sdl.c.i
+
+.PHONY : src/sdl.i
+
+# target to preprocess a source file
+src/sdl.c.i:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/sdl.c.i
+.PHONY : src/sdl.c.i
+
+src/sdl.s: src/sdl.c.s
+
+.PHONY : src/sdl.s
+
+# target to generate assembly for a file
+src/sdl.c.s:
+	$(MAKE) -f CMakeFiles/DOOMM.dir/build.make CMakeFiles/DOOMM.dir/src/sdl.c.s
+.PHONY : src/sdl.c.s
 
 # Help Target
 help:
@@ -158,10 +860,88 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... WOOLF"
+	@echo "... DOOMM"
+	@echo "... lib/libft/ft_bzero.o"
+	@echo "... lib/libft/ft_bzero.i"
+	@echo "... lib/libft/ft_bzero.s"
+	@echo "... lib/libft/ft_itoa.o"
+	@echo "... lib/libft/ft_itoa.i"
+	@echo "... lib/libft/ft_itoa.s"
+	@echo "... lib/libft/ft_memalloc.o"
+	@echo "... lib/libft/ft_memalloc.i"
+	@echo "... lib/libft/ft_memalloc.s"
+	@echo "... lib/libft/ft_memchr.o"
+	@echo "... lib/libft/ft_memchr.i"
+	@echo "... lib/libft/ft_memchr.s"
+	@echo "... lib/libft/ft_memset.o"
+	@echo "... lib/libft/ft_memset.i"
+	@echo "... lib/libft/ft_memset.s"
+	@echo "... lib/libft/ft_minus.o"
+	@echo "... lib/libft/ft_minus.i"
+	@echo "... lib/libft/ft_minus.s"
+	@echo "... lib/libft/ft_putchar_fd.o"
+	@echo "... lib/libft/ft_putchar_fd.i"
+	@echo "... lib/libft/ft_putchar_fd.s"
+	@echo "... lib/libft/ft_putendl.o"
+	@echo "... lib/libft/ft_putendl.i"
+	@echo "... lib/libft/ft_putendl.s"
+	@echo "... lib/libft/ft_putendl_fd.o"
+	@echo "... lib/libft/ft_putendl_fd.i"
+	@echo "... lib/libft/ft_putendl_fd.s"
+	@echo "... lib/libft/ft_putstr_fd.o"
+	@echo "... lib/libft/ft_putstr_fd.i"
+	@echo "... lib/libft/ft_putstr_fd.s"
+	@echo "... lib/libft/ft_strchr.o"
+	@echo "... lib/libft/ft_strchr.i"
+	@echo "... lib/libft/ft_strchr.s"
+	@echo "... lib/libft/ft_strdel.o"
+	@echo "... lib/libft/ft_strdel.i"
+	@echo "... lib/libft/ft_strdel.s"
+	@echo "... lib/libft/ft_strdup.o"
+	@echo "... lib/libft/ft_strdup.i"
+	@echo "... lib/libft/ft_strdup.s"
+	@echo "... lib/libft/ft_strjoin.o"
+	@echo "... lib/libft/ft_strjoin.i"
+	@echo "... lib/libft/ft_strjoin.s"
+	@echo "... lib/libft/ft_strlen.o"
+	@echo "... lib/libft/ft_strlen.i"
+	@echo "... lib/libft/ft_strlen.s"
+	@echo "... lib/libft/ft_strnew.o"
+	@echo "... lib/libft/ft_strnew.i"
+	@echo "... lib/libft/ft_strnew.s"
+	@echo "... lib/libft/ft_strsub.o"
+	@echo "... lib/libft/ft_strsub.i"
+	@echo "... lib/libft/ft_strsub.s"
+	@echo "... lib/libft/ft_tolower.o"
+	@echo "... lib/libft/ft_tolower.i"
+	@echo "... lib/libft/ft_tolower.s"
+	@echo "... src/ft_fps.o"
+	@echo "... src/ft_fps.i"
+	@echo "... src/ft_fps.s"
+	@echo "... src/ft_init_varible.o"
+	@echo "... src/ft_init_varible.i"
+	@echo "... src/ft_init_varible.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/get_next_line.o"
+	@echo "... src/get_next_line.i"
+	@echo "... src/get_next_line.s"
+	@echo "... src/jump.o"
+	@echo "... src/jump.i"
+	@echo "... src/jump.s"
+	@echo "... src/keys.o"
+	@echo "... src/keys.i"
+	@echo "... src/keys.s"
+	@echo "... src/keys_2.o"
+	@echo "... src/keys_2.i"
+	@echo "... src/keys_2.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/sdl.o"
+	@echo "... src/sdl.i"
+	@echo "... src/sdl.s"
 .PHONY : help
 
 

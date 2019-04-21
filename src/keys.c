@@ -62,7 +62,7 @@ void	ft_keys_3(t_wolf *wolf)
 
 void	ft_keys_4(t_wolf *wolf)
 {
-	if (wolf->keys[SDL_SCANCODE_Q] && wolf->fPlayerHeight < wolf->WALL_HEIGHT - 20)
+	if (wolf->keys[SDL_SCANCODE_Q] && wolf->fPlayerHeight < wolf->maxHeightPlayer - 20)
 	{
 		wolf->fPlayerHeight += 5;
 	}
